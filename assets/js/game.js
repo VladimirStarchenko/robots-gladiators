@@ -84,7 +84,7 @@ var startGame = function() {
     // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
     fight(pickedEnemyObj);
 
-    if (playerInfo.health > 0 && i < enemy.name.length -1) {
+    if (playerInfo.health > 0 && i < enemyInfo.length -1) {
         var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
         if (storeConfirm) {
@@ -151,11 +151,21 @@ var endGame = function () {
         // call shio() again to force player to pick a valid option
         shop();
         break;
-    }
+     }
     };
 
+    var getPlayerName = function() {
+        var name = "";
+
+        while (name === "" || name === null) {
+            name = prompt ("What is your robot's name?");
+        }
+        console.log("Your robot's name is " + name);
+        return name;
+        };
+        
     var playerInfo = {
-        name: window.prompt("What is your robot's name?"),
+        name: getPlayerName(),
         health: 100,
         attack: 10,
         money: 10,
